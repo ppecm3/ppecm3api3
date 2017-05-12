@@ -1,0 +1,11 @@
+{
+  "generator-openapi-repo": {
+    "importExistingSpec": true,
+    "importedSpec": "/Users/ivang/dev/eng_swagger/spec/swagger.yaml",
+    "name": "EazyCollect",
+    "repo": "EazyCollectServices/EazyCollectAPIv3",
+    "splitSpec": false,
+    "samples": false,
+    "installSwaggerUI": false
+  }
+}

@@ -2021,8 +2021,13 @@ paths:
                   required:
                     - amount
                     - date
+					- contractId
                   properties:
-                    amount:
+                    contractID:
+					  description: The contract GUID that you wish to collect a payment against. 
+			          type: string
+	                  format: guid
+					amount:
                       description: The amount to be collected.
                       type: number
                       multipleOf: 0.01

@@ -2021,7 +2021,7 @@ paths:
                   required:
                     - amount
                     - date
-                    - contractId
+                    - contract
                   properties:
                     contract:
                       description: The contract GUID that you wish to collect a payment against. 

@@ -2023,7 +2023,7 @@ paths:
                     - date
                     - contractId
                   properties:
-                    contractID:
+                    contract:
                       description: The contract GUID that you wish to collect a payment against. 
                       type: string
                       format: guid

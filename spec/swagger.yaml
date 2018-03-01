@@ -1849,7 +1849,7 @@ paths:
     parameters:
       - $ref: '#/parameters/clientCode'
       - name: contractId
-        description: The contract GUID that you wish to restart.
+        description: The contract GUID that you wish to query.
         required: true
         in: path
         type: string

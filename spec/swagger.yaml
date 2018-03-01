@@ -248,7 +248,7 @@ info:
     - You are using the correct HTTP method, but have failed to include a
       mandatory field.
 
-    Before raising a ticked with our IT Helpdesk, please check the
+    Before raising a ticket with our IT Helpdesk, please check the
     documentation to ensure that the method you are using is supported and
     that all mandatory parameters have been included.
 parameters:
@@ -1268,7 +1268,6 @@ paths:
         - $ref: '#/parameters/email'
         - $ref: '#/parameters/title'
         - $ref: '#/parameters/dateOfBirth?'
-        - $ref: '#/parameters/customerRef?'
         - $ref: '#/parameters/firstName?'
         - $ref: '#/parameters/surname?'
         - $ref: '#/parameters/companyName?'

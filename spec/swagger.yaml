@@ -974,10 +974,13 @@ tags:
 
       | **Parameter** | **Description**
       | ------------- | ---------------
+      | AccountName | If the Entity type is customer, the customers name as it appears on their bank account.
+      | AccountNumber | If the Entity type is customer, the customers bank account number.
+      | SortCode | If the Entity type is customer, the bank sort code of the customer.
       | NewStatus | This is the new status of the object. For payments, this can be:<br>Represented<br>Pending<br>Paid<br>Unpaid<br>Withdrawn<br>Indemnity Claimed<br><br>For contracts:<br>Expired<br>Cancelled<br>Pause<br>Suspended<br>Cancellation Pending<br>Active<br>Creation Pending<br>
       | Id | The GUID of the object being reported on.
       | ChangeDate | The date/time that the change took place.
-      | Entity | The entity type: either payment or contract.
+      | Entity | The entity type: either payment, contract or customer.
       | ChangeType | BACS or Manual depending on how the change came about.
       | Source | ADDACS, ARUDD, DDIC or Manual depending on the source if the change.
       | ReportCode | If the change came from a BACS report (ADDACS, ARUDD or DDIC) the reason code will appear in this field. It will be null in the case of a manual change.

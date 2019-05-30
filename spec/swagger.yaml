@@ -1828,6 +1828,7 @@ paths:
         have already come to an end.
       parameters:
         - $ref: '#/parameters/paymentDayInMonth?'
+        - $ref: '#/parameters/paymentMonthInYear?'
         - $ref: '#/parameters/terminationType'
         - $ref: '#/parameters/numberOfDebits?'
         - $ref: '#/parameters/initialAmount?'

@@ -1828,7 +1828,17 @@ paths:
         have already come to an end.
       parameters:
         - $ref: '#/parameters/paymentDayInMonth?'
-        - $ref: '#/parameters/paymentMonthInYear?'
+        - name: paymentMonthInYear
+          description: |
+            If the contract is for regular payments then the month in which you
+            wish the first payment should be passed with this parameter.
+
+            This field is only mandatory if the contract is **not** an ad-hoc contract.
+            This field is only mandatory if the contract is **annual** or **monthly**.
+          in: query
+          type: integer
+          minimum: 1
+          maximum: 12
         - $ref: '#/parameters/terminationType'
         - $ref: '#/parameters/numberOfDebits?'
         - $ref: '#/parameters/initialAmount?'

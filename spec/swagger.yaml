@@ -20,8 +20,8 @@ info:
   contact:
     email: it.helpdesk@eazycollect.co.uk
   x-logo:
-    backgroundColor: '#27618E'
-    url: 'https://www.eazycollect.co.uk/images/eazycollectdirectdebits.png'
+    backgroundColor: '#FFFFFF'
+    url: 'https://directdebits.paypoint.com/Images/Icons/paypoint/Main.Logo.png'
   version: '3.0.0'
   description: |
     Established in 2002, Eazy Collect Services Limited is a forward-thinking FinTech

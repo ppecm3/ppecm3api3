@@ -1,7 +1,7 @@
 swagger: '2.0'
 schemes:
   - https
-host: ecm3.eazycollect.co.uk
+host: directdebits.paypoint.com
 basePath: /api/v3
 consumes:
   - x-www-form-urlencoded
@@ -16,24 +16,16 @@ securityDefinitions:
 security:
   - apiKey: []
 info:
-  title: Eazy Collect
+  title: PayPoint Direct Debit API
   contact:
-    email: it.helpdesk@eazycollect.co.uk
+    email: helpdesk@paypoint.com
   x-logo:
     backgroundColor: '#FFFFFF'
     url: 'https://directdebits.paypoint.com/Images/Icons/paypoint/Main.Logo.png'
   version: '3.0.0'
   description: |
-    Established in 2002, Eazy Collect Services Limited is a forward-thinking FinTech
-    accredited as a BACS Approved Bureau and Payment Institution regulated by the FCA.
-    We provide a range of Direct Debit Processing and Management services to businesses,
-    NFP, member organisations and public sector. Clients typically include those who are
-    unable to access the Direct Debit Scheme with their own resources, or who already
-    have access to the Scheme but wish to make cost savings and achieve seamless
-    automation by outsourcing and/or integrating the processing of payments and return
-    reconciliation via our two-way API.
 
-    Our Collection Services are based around our Eazy Customer Manager™ application
+    Our Direct Debit Collection Services are based around our Direct Debit Customer Manager application
     which manages the Direct Debit process from beginning to end and is connected to a
     robust and powerful BACS submission engine. The system also provides a range of
     management information via the easy to use secure web interface.
@@ -61,7 +53,7 @@ info:
     ### Example Headers for JSON Mode:
 
     ```
-    GET https://ecm3.eazycollect.co.uk/api/v3/client/LUISCT/BACS/callback
+    GET https://directdebits.paypoint.com/api/v3/client/LUISCT/BACS/callback
 
     Accept: application/json
     apiKey: xAQdXTPtZPG3QqsUJw73wx1o
@@ -86,7 +78,7 @@ info:
           dates in a month, or days in a week as per your instructions.
         - A schedule where the collection amounts and or dates are fixed.
 
-        Eazy Collect creates the schedules as part of the set-up process and
+        PayPoint creates the schedules as part of the set-up process and
         the available schedules can be listed by using the ‘schedules’ call.
 
     2. As soon as a schedule is applied to a customer record, we send an
@@ -94,7 +86,7 @@ info:
     for the first payment required should be set <u>at least</u> 10 working
     days after the schedule creation date.
 
-    3. Ad-hoc payments need to be lodged onto the *Eazy Customer Manager™*
+    3. Ad-hoc payments need to be lodged onto the *Direct Debit Customer Manager*
     <u>at least</u> 5 working days before the collection date.
 
     4. Around three working days before the collection date, we submit the
@@ -140,7 +132,7 @@ info:
 
     ## Using the API and UI together
 
-    Eazy Customer Manager provides a useful User Interface (UI) available
+    Direct Debit Customer Manager provides a useful User Interface (UI) available
     via your browser which gives access to your customer data and a suite of
     reports.
 
@@ -155,10 +147,10 @@ info:
     It is important to note that when using the API in a “full integration”
     the following anomalies will be present within the UI:
 
-    - The account and arrears balances shown in the Eazy Collect UI
+    - The account and arrears balances shown in the Direct Debit Customer Manager UI
       against each customer will not reflect manual payments made in your
       CRM/Accounts package unless they are also (double) keyed as manual
-      payments onto the Eazy Customer Manager UI.
+      payments onto the Direct Debit Customer Manager UI.
 
     - At present, there is no way to automatically “represent” failed
       payments using the API and therefore our recommendation is to add a
@@ -174,7 +166,7 @@ info:
       that have been represented via the UI.
 
     If you require any further assistance with using the API and UI
-    together, please contact the IT Helpdesk at it.helpdesk@eazycollect.co.uk
+    together, please contact the helpdesk at helpdesk@paypoint.com
 
     ## Error Handling
 
@@ -218,7 +210,7 @@ info:
 
     - The CLIENT CODE in the URL is incorrect.
     - The API KEY quoted is incorrect.
-    - The API has not been enabled by Eazy Collect.
+    - The API has not been enabled by PayPoint.
 
     Before raising a support ticket with our IT Helpdesk, please check
     carefully that the API Key and Client Code being used are correct,
@@ -693,7 +685,7 @@ definitions:
           - Unpaid – The payment has been returned by the bank unpaid and **will not**
             be sent again to the bank for collection.
           - Withdrawn – The payment was at the point of being sent to the bank for
-            collection, but was withdrawn by Eazy Collect at the last minute. The
+            collection, but was withdrawn by Paypoint at the last minute. The
             payment has not been collected.
           - Indemnity Claimed – The customer has approached their bank for a refund
             which is being/has been processed.
@@ -824,7 +816,7 @@ tags:
     description: |
       Return data is passed to an endpoint of your choice by setting the URL
       that data should be posted to using the API. You should contact us at
-      it.helpdesk@eazycollect.co.uk to advise whether you require return
+      helpdesk@@paypoint.com to advise whether you require return
       information in XML or JSON format; the default is JSON.
   - name: Customer Manipulation
     description: |
@@ -916,9 +908,9 @@ tags:
   - name: Bulk Adding Payments
   - name: Payment Manipulation
   - name: Obtaining Available Schedules
-  - name: Eazy Entry
+  - name: Door Entry
     description: |
-      Eazy Entry is our simple to use access management system for gyms and
+      Door Entry is our simple to use access management system for gyms and
       member clubs. Used in conjunction with a card reader, the system can
       enquire upon the payment status of a member and be used as part of a
       decision making process either allowing the member access to a
@@ -1034,7 +1026,7 @@ paths:
           description: OK
           examples:
             'application/json':
-              'Message': 'https://ecm3.eazycollect.co.uk/TestHandler.ashx'
+              'Message': 'https://directdebits.paypoint.com/TestHandler.ashx'
       tags:
         - 'Return Endpoint'
     post:
@@ -1118,13 +1110,13 @@ paths:
               Title: Mr
               FirstName: Matthew
               Surname: Harris
-              CompanyName: Eazy Collect
+              CompanyName: PayPoint
               Initials: null
               DateOfBirth: 2017-01-01T00:00:00
               HomePhoneNumber: '01234567890'
               MobilePhoneNumber: null
               WorkPhoneNumber: null
-              Email: spam@eazycollect.co.uk
+              Email: spam@paypoint.com
               AddressDetail:
                 Line1: 1 Tebbit Mews
                 Line2: Winchcombe Street
@@ -1132,7 +1124,7 @@ paths:
                 Line4: null
                 PostCode: A1 1AA
               BankDetail:
-                AccountHolderName: Eazy Collect
+                AccountHolderName: Test
                 AccountNumber: '01065285'
                 BankSortCode: '309906'
               Memos: []
@@ -1146,10 +1138,10 @@ paths:
                   <Title>Mr</Title>
                   <FirstName>Matthew</FirstName>
                   <Surname>Harris</Surname>
-                  <CompanyName>Eazy Collect</CompanyName>
+                  <CompanyName>Payoint</CompanyName>
                   <DateOfBirth>2017-01-01T00:00:00</DateOfBirth>
                   <HomePhoneNumber>01234567890</HomePhoneNumber>
-                  <Email>spam@eazycollect.co.uk</Email>
+                  <Email>spam@paypoint.com</Email>
                   <AddressDetail>
                       <Line1>1 Tebbit Mews</Line1>
                       <Line2>Winchcombe Street</Line2>
@@ -1157,7 +1149,7 @@ paths:
                       <PostCode>A1 1AA</PostCode>
                   </AddressDetail>
                   <BankDetail>
-                      <AccountHolderName>Eazy Collect</AccountHolderName>
+                      <AccountHolderName>Test</AccountHolderName>
                       <AccountNumber>01065285</AccountNumber>
                       <BankSortCode>309906</BankSortCode>
                   </BankDetail>
@@ -1403,9 +1395,7 @@ paths:
 
         A working day means a banking day in the United Kingdom which is Mondays
         to Fridays and excludes public and bank holidays. A list of public and
-        bank holidays can be found here: <https://www.gov.uk/bank-holidays>. A
-        date checker is also provided on our website:
-        <https://www.eazycollect.co.uk/date>.
+        bank holidays can be found here: <https://www.gov.uk/bank-holidays>. 
 
         While the above timeframes are the minimum required, we strongly
         recommend building yourself a day or two of contingency into your
@@ -2344,7 +2334,7 @@ paths:
                   <CardNumber>?123456789;</CardNumber>
               </EzEntryDetail>
       tags:
-        - 'Eazy Entry'
+        - 'Door Entry'
   '/eazyentry/client/{clientCode}/surname_postcode':
     parameters:
       - $ref: '#/parameters/clientCode'
@@ -2420,7 +2410,7 @@ paths:
                   </Customers>
               </EzEntriesResponse>
       tags:
-        - 'Eazy Entry'
+        - 'Door Entry'
   '/eazyentry/client/{clientCode}/customer/{customerId}':
     parameters:
       - $ref: '#/parameters/clientCode'
@@ -2440,4 +2430,4 @@ paths:
                 <Message>Visit recorded</Message>
               </GeneralAcknowledgement>
       tags:
-        - 'Eazy Entry'
+        - 'Door Entry'

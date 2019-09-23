@@ -1,13 +1,13 @@
-# EazyCollect OpenAPI Specification
+# PayPoint OpenAPI Specification
 [![Build Status](https://travis-ci.org/EazyCollectServices/EazyCollectAPIv3.svg?branch=master)](https://travis-ci.org/EazyCollectServices/EazyCollectAPIv3)
 
 ## Links
 
-- Documentation(ReDoc): https://eazycollectservices.github.io/EazyCollectAPIv3/
+- Documentation(ReDoc): https://ppecm3.github.io/ppecm3api3/
 - Look full spec:
-    + JSON https://eazycollectservices.github.io/EazyCollectAPIv3/swagger.json
-    + YAML https://eazycollectservices.github.io/EazyCollectAPIv3/swagger.yaml
-- Preview spec version for branch `[branch]`: https://eazycollectservices.github.io/EazyCollectAPIv3/preview/[branch]
+    + JSON https://ppecm3.github.io/ppecm3api3/swagger.json
+    + YAML https://ppecm3.github.io/ppecm3api3/swagger.yaml
+- Preview spec version for branch `[branch]`: https://ppecm3.github.io/ppecm3api3/preview/[branch]
 
 **Warning:** All above links are updated only after Travis CI finishes deployment
 
@@ -21,7 +21,7 @@
 ### Usage
 
 1. Run `npm start`
-2. Checkout console output to see where local server is started. You can use all [links](#links) (except `preview`) by replacing https://eazycollectservices.github.io/EazyCollectAPIv3/ with url from the message: `Server started <url>`
+2. Checkout console output to see where local server is started. You can use all [links](#links) (except `preview`) by replacing https://ppecm3.github.io/ppecm3api3/ with url from the message: `Server started <url>`
 3. Make changes using your favorite editor or `swagger-editor` (look for URL in console output)
 4. All changes are immediately propagated to your local server, moreover all documentation pages will be automagically refreshed in a browser after each change
 **TIP:** you can open `swagger-editor`, documentation and `swagger-ui` in parallel

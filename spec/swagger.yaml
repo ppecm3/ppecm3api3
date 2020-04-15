@@ -1466,9 +1466,14 @@ paths:
         - $ref: '#/parameters/paymentDayInMonth?'
         - name: paymentDayInWeek
           description: |
+            1 -> Monday                                                                     
+            2 -> Tuesday                                                                     
+            3 -> Wednesday                                                                     
+            4 -> Thursday                                                                     
+            5 -> Friday
+            
             If the contract is for regular payments and has a weekly frequency, pass the
             day of the week that you wish payments to be collected via this parameter.
-
             This field is only mandatory if the contract is **not** an ad-hoc contract.
             This field is only mandatory if the contract is **weekly**.
           in: query

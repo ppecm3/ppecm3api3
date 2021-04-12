@@ -53,7 +53,7 @@ info:
     ### Example Headers for JSON Mode:
 
     ```
-    GET https://directdebits.paypoint.com/api/v3/client/LUISCT/BACS/callback
+    GET https://directdebits.paypoint.com/api/v3/client/LUISCT/BACS/customer/callback
 
     Accept: application/json
     apiKey: xAQdXTPtZPG3QqsUJw73wx1o
@@ -812,11 +812,11 @@ definitions:
         description: The customer’s membership card number.
         type: string
 tags:
-  - name: Return Endpoint
+  - name: Return Endpoints
     description: |
-      Return data is passed to an endpoint of your choice by setting the URL
+      Return data is passed to endpoint(s) of your choice by setting the URL
       that data should be posted to using the API. You should contact us at
-      helpdesk@@paypoint.com to advise whether you require return
+      helpdesk@paypoint.com to advise whether you require return
       information in XML or JSON format; the default is JSON.
   - name: Customer Manipulation
     description: |
@@ -1016,48 +1016,161 @@ tags:
       | Error     | Any validation errors will appear here.
       | Message   | Any validation messages or warnings will appear here.
 paths:
-  '/client/{clientCode}/BACS/callback':
-    parameters:
-      - $ref: '#/parameters/clientCode'
-    get:
-      summary: Outputs the current endpoint to which return data is being sent to.
-      responses:
-        '200':
-          description: OK
-          examples:
-            'application/json':
-              'Message': 'https://directdebits.paypoint.com/TestHandler.ashx'
-      tags:
-        - 'Return Endpoint'
-    post:
-      summary: Updates or sets the endpoint to which return data should be sent to.
+  '/client/{clientCode}/BACS/{entity}/callback':
+    delete:
+      produces:
+        - application/json
+        - application/xml
       parameters:
-        - name: url
-          description: The URL to which return data should be sent.
+        - description: The client code provided in your welcome email.
+          in: path
+          maxLength: 6
+          name: clientCode
           required: true
-          in: query
           type: string
-          maxLength: 300
+        - description: The entity for which to receive callback BACS messages.
+          enum:
+            - customer
+            - contract
+            - payment
+          in: path
+          name: entity
+          required: true
+          type: string
       responses:
         '200':
           description: OK
           examples:
-            'application/json':
-              'Message': 'Updated url'
-            'application/xml': |
-              <GeneralAcknowledgement xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                  <Message>Updated url</Message>
+            application/json:
+              Message: Callback URL cleared.
+            application/xml: |-
+              <GeneralAcknowledgement
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                  <Message>Callback URL cleared.</Message>
               </GeneralAcknowledgement>
       tags:
-        - 'Return Endpoint'
-    delete:
-      summary: Removes the current endpoint setting and disables the sending of return data.
+        - Return Endpoints
+      description: Clears the set callback URL for the specified entity.
+      summary: Clears the set callback URL for the given return endpoint
+      x-codeSamples:
+        - lang: cURL
+          source: >
+            curl --request DELETE
+            "https://directdebits.paypoint.com/api/v3/client/{clientCode}/BACS/{enitity}/callback"
+    get:
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - description: The client code provided in your welcome email.
+          in: path
+          maxLength: 6
+          name: clientCode
+          required: true
+          type: string
+        - description: The entity for which to receive callback BACS messages.
+          enum:
+            - customer
+            - contract
+            - payment
+          in: path
+          name: entity
+          required: true
+          type: string
       responses:
         '200':
           description: OK
+          examples:
+            application/json:
+              Message: 'https://my.website.com/webhook'
+            application/xml: >-
+              <GeneralAcknowledgement
+              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Message>https://my.website.com/webhook</Message></GeneralAcknowledgement>
+                
+        '401':
+          description: Unauthorised - API not enabled or API key incorrect
+          examples:
+            application/json:
+              Message: API not enabled
+            application/xml: |-
+              <ErrorAcknowledgement xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Message>API
+                  not enabled</Message><ErrorCode>7</ErrorCode></ErrorAcknowledgement>
+        '404':
+          description: Not found - Client code incorrect
+          examples:
+            application/json:
+              ErrorCode: 7
+              Message: API not enabled
+            application/xml: >-
+              <ErrorAcknowledgement xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Message>API
+                not enabled</Message><ErrorCode>7</ErrorCode></ErrorAcknowledgement>
+        '405':
+          description: API key not provided
+          examples:
+            application/json:
+              Message: The requested resource does not support http method 'POST'.
+            application/xml: >-
+              <Error><Message>The requested resource does not support http
+              method 'POST'.</Message></Error>
       tags:
-        - 'Return Endpoint'
+        - Return Endpoints
+      description: Returns the assigned callback URL for the specified entity.
+      summary: Get the callback URL for the given return endpoint
+      x-codeSamples:
+        - lang: cURL
+          source: >
+            curl
+            "https://directdebits.paypoint.com/api/v3/client/{clientCode}/BACS/{enitity}/callback"
+    post:
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - description: The client code provided in your welcome email.
+          in: path
+          maxLength: 6
+          name: clientCode
+          required: true
+          type: string
+        - description: The entity for which to receive callback BACS messages.
+          enum:
+            - customer
+            - contract
+            - payment
+          in: path
+          name: entity
+          required: true
+          type: string
+        - description: New value for the callback URL.
+          format: url
+          in: query
+          name: url
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json:
+              Message: Callback URL assigned.
+            application/xml: >-
+              <GeneralAcknowledgement
+              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Message>Callback
+                URL assigned.</Message></GeneralAcknowledgement>
+      tags:
+        - Return Endpoints
+      description: Sets the callback URL for the specified entity.
+      summary: Sets the callback URL for the given return endpoint
+      x-codeSamples:
+        - lang: cURL
+          source: >
+            curl -d "url=https://my.website.com/webhook"
+            https://directdebits.paypoint.com/api/v3/client/{clientCode}/BACS/{enitity}/callback
   '/client/{clientCode}/customer':
     parameters:
       - $ref: '#/parameters/clientCode'

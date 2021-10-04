@@ -978,8 +978,39 @@ tags:
       | ReportCode | If the change came from a BACS report (ADDACS, ARUDD or DDIC) the reason code will appear in this field. It will be null in the case of a manual change.
       | ReportMessage | Plain text explanation of the change. We recommend this is logged at your end for reference.
       | Comment | If any comment was input by a user during a manual change, it will appear here.
+      
+      ### New Payment Generated Notification Information
+      
+      This notification is submitted to your payments webhook whenever DDCMS generates
+      a new payment on either a fixed or rolling regular schedule.
+      This does *NOT* send information on payments submitted on an adhoc schedule.
+      
+      #### Example JSON Payload
+      
+      ```json
+      
+      {
+        "CustomerId": "8e8880dc-d36a-500e-9757-dcdab7418f8a",
+        "CustomerRef": null,
+        "ContractId": "bca883a2-e939-44ff-b3f0-9823°00dd388",
+        "DirectDebitRef": "ABC-XY009999",
+        "DateAdded": "2021-02-19T11:22:26.7662254+00:00",
+        "DateDue": "2021-03-01T00:00:00",
+        "Amount": 49.7,
+        "Comments": null,
+        "Id": "59cde7d8-1a81-4da3-b04f-10e71020ed74",
+        "Entity": "payment",
+        "CreateType": "BACS",
+        "Source": null,
+        "Status": "Pending"
+      }
+
+      ```
 
       ### Bulk Payment Insert Return Information
+      
+      This is what the API returns from a bulk payment insert - see the *Bulk Adding
+      Payments* section for more info.
 
       #### Example XML Payload
 

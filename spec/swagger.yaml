@@ -21,7 +21,7 @@ info:
     email: helpdesk@paypoint.com
   x-logo:
     backgroundColor: '#FFFFFF'
-    url: 'https://directdebits.paypoint.com/Images/Icons/paypoint/Main.Logo.png'
+    url: 'https://directdebits.paypoint.com/Images/Main.LogoPaypoint.png'
   version: '3.0.0'
   description: |
 

@@ -979,6 +979,43 @@ tags:
       | ReportMessage | Plain text explanation of the change. We recommend this is logged at your end for reference.
       | Comment | If any comment was input by a user during a manual change, it will appear here.
       
+      ### Object Change Report Codes
+      
+      The following is a list of all potential BACS Report codes we can send to your webhooks.
+      
+      | **Source** | **Entity** | **ReportCode** | **ReportMessage**
+      | ---------- | ---------- | -------------- | -----------------
+      | ADDACS | Contract | 0 | Instruction Cancelled - Refer to Payer
+      | ADDACS | Contract | 1 | Instruction Cancelled
+      | ADDACS | Contract | 2 | Payer Deceased
+      | ADDACS | Customer | 3 | Account transferred to new Bank or Building Society
+      | ADDACS | Contract | B | Account Closed
+      | ADDACS | Customer | C | Account transferred to a different branch of Bank or Building Society
+      | ADDACS | Contract | D | Advance Notice Disputed
+      | ADDACS | Customer | E | Instruction Amended
+      | ADDACS | Contract | R | Instruction Reinstated
+      | ARUDD | Payment | 0 | Refer to Payer
+      | ARUDD | Payment | 1 | Instruction Cancelled
+      | ARUDD | Payment | 2 | Payer Deceased
+      | ARUDD | Payment | 3 | Account Transferred
+      | ARUDD | Payment | 4 | Advance Notice Disputed
+      | ARUDD | Payment | 5 | No Account
+      | ARUDD | Payment | 6 | No Instruction
+      | ARUDD | Payment | 7 | Amount Differs
+      | ARUDD | Payment | 8 | Amount Not Yet Due
+      | ARUDD | Payment | 9 | Presentation Overdue
+      | ARUDD | Payment | A | Service User Differs
+      | ARUDD | Payment | B | Account Closed
+      | DDIC | Contract | 1 | The amount and/or date of the Direct Debit differs from the Advance Notice
+      | DDIC | Contract | 2 | No advance notice was received by the payer or the amount quoted is disputed by the payer
+      | DDIC | Contract | 3 | DDI cancellation by the paying bank
+      | DDIC | Contract | 4 | Payer has cancelled the DDI direct with the Service User
+      | DDIC | Contract | 5 | Payer disputes having given authority
+      | DDIC | Contract | 6 | Signature on DDI is fraudulent or not in accordance with the account authorised signature(s) held by the paying bank
+      | DDIC | Contract | 7 | An indemnity claim has been raised at the Service User's request
+      | DDIC | Contract | 8 | Payer does not recognise Service User collecting Direct Debit
+      
+      
       ### New Payment Generated Notification Information
       
       This notification is submitted to your payments webhook whenever DDCMS generates

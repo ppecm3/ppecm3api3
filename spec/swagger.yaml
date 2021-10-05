@@ -985,6 +985,18 @@ tags:
       
       | **Source** | **Entity** | **ReportCode** | **ReportMessage**
       | ---------- | ---------- | -------------- | -----------------
+      | AUDDIS | Contract | 1 | Instruction Cancelled by Payer
+      | AUDDIS | Contract | 2 | Payer Deceased
+      | AUDDIS | Contract | 3 | Account Transferred to a new Bank or Building Society
+      | AUDDIS | Contract | 5 | No Account
+      | AUDDIS | \- | 6 | No Instruction
+      | AUDDIS | Contract | B | Account Closed
+      | AUDDIS | Customer | C | Account Transferred to a Different Branch of Bank/Building Society
+      | AUDDIS | Contract | F | Invalid Account Type
+      | AUDDIS | Contract | G | Bank will not accept Direct Debits on Account
+      | AUDDIS | Contract | H | Instruction has Expired
+      | AUDDIS | Contract | I | Payer Reference is not Unique
+      | AUDDIS | Contract | K | Instruction Cancelled by Paying Back
       | ADDACS | Contract | 0 | Instruction Cancelled - Refer to Payer
       | ADDACS | Contract | 1 | Instruction Cancelled
       | ADDACS | Contract | 2 | Payer Deceased

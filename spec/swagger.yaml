@@ -1255,7 +1255,7 @@ paths:
     parameters:
       - $ref: '#/parameters/clientCode'
     get:
-      summary: Queries the database for a customer or set of customers.
+      summary: Queries the database for a set of customers.
       description: |
         **NOTE:** The response from a GET method includes an `IsArchived` flag.
         On a newly created customer, this will show as `true` which is normal.
@@ -1450,6 +1450,80 @@ paths:
     parameters:
       - $ref: '#/parameters/clientCode'
       - $ref: '#/parameters/customerId'
+    get:
+      produces:
+        - application/json
+        - application/xml
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json:
+              AddressDetail:
+                Line1: 1 Tebbit Mews
+                Line2: Winchcombe Street
+                Line3: Cheltenham
+                PostCode: A1 1AA
+              BankDetail:
+                AccountHolderName: PayPoint
+                AccountNumber: 01065285
+                BankSortCode: '309906'
+              CompanyName: PayPoint
+              CustomerRef: AE102890
+              DateAdded": '2017-04-12T13:22:48.800Z'
+              DateOfBirth: '2017-01-01T00:00:00.000Z'
+              Email: spam@paypoint.com
+              FirstName: Matthew
+              HomePhoneNumber: 01234567890
+              Id: c36ce83c-0064-4c1e-a157-cd4c70decf47
+              IsArchived: true
+              Memos: []
+              Surname: Harris
+              Title: Mr
+            application/xml: >-
+              <CustomerDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                  <Id>c36ce83c-0064-4c1e-a157-cd4c70decf47</Id>
+                  <CustomerRef>AE102890</CustomerRef>
+                  <IsArchived>true</IsArchived>
+                  <DateAdded>2017-04-12T13:22:48.8</DateAdded>
+                  <Title>Mr</Title>
+                  <FirstName>Matthew</FirstName>
+                  <Surname>Harris</Surname>
+                  <CompanyName>PayPoint</CompanyName>
+                  <DateOfBirth>2017-01-01T00:00:00</DateOfBirth>
+                  <HomePhoneNumber>01234567890</HomePhoneNumber>
+                  <Email>spam@paypoint.com</Email>
+                  <AddressDetail>
+                      <Line1>1 Tebbit Mews</Line1>
+                      <Line2>Winchcombe Street</Line2>
+                      <Line3>Cheltenham</Line3>
+                      <PostCode>A1 1AA</PostCode>
+                  </AddressDetail>
+                  <BankDetail>
+                      <AccountHolderName>PayPoint</AccountHolderName>
+                      <AccountNumber>01065285</AccountNumber>
+                      <BankSortCode>309906</BankSortCode>
+                  </BankDetail>
+                  <Memos />
+              </CustomerDetail>
+        '404':
+          description: Customer not found
+          examples:
+            application/json:
+              Message: API not enabled
+            application/xml: >-
+              <ErrorAcknowledgement xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Message>API
+                not enabled</Message><ErrorCode>7</ErrorCode></ErrorAcknowledgement>
+      tags:
+        - Customer Manipulation
+      description: |
+        **NOTE:** The response from a GET method includes an `IsArchived` flag.
+        On a newly created customer, this will show as `true` which is normal.
+        The record will automatically change to `false` when an associated live
+        Direct Debit (contract) is attached to it.
+      summary: Queries the database for a single customer by ID.
     patch:
       summary: Updates (or partially updates) an existing customer in the database.
       parameters:
